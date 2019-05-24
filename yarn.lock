@@ -666,6 +666,15 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@elyby/eslint-plugin@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@elyby/eslint-plugin/-/eslint-plugin-0.1.0.tgz#02e1860b8d176dca8dac982e2d3b1837dd6ad293"
+  integrity sha512-P/mv8wj6E3YbdR7N+f/pPWDZlKIHvVHH7ruOjyRMuGElMWnXycFv3tqA0xJgPE1gTCaa8NYg6jbk6Q8l/d/7xw==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^1.9.0"
+    "@typescript-eslint/parser" "^1.9.0"
+    eslint-plugin-react "^7.13.0"
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"

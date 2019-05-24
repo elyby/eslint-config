@@ -9,6 +9,7 @@ cache:
 
 script:
   - yarn tsc
+  - yarn lint
   - yarn test
   - yarn build
 
