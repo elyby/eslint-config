@@ -17,6 +17,9 @@
         "elyby"
     ],
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "build": "babel src -d lib --extensions .ts,.js",
         "test": "jest"
