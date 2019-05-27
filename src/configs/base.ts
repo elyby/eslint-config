@@ -1,35 +1,22 @@
 import { Linter } from 'eslint';
 
 const config: Linter.Config = {
-    parser: '@typescript-eslint/parser',
     parserOptions: {
         sourceType: 'module',
         ecmaVersion: 2018,
-        ecmaFeatures: {
-            jsx: true,
-        },
-    },
-
-    settings: {
-        react: {
-            version: 'detect',
-        },
     },
 
     // @ts-ignore
-    plugins: [
-        'react-hooks',
-        '@typescript-eslint',
-        '@elyby',
-    ],
-
     extends: [
         'eslint:recommended',
-        'plugin:react/recommended',
     ],
 
     rules: {
         // possible errors (including eslint:recommended)
+        'no-extra-parens': ['warn', 'all', {
+            nestedBinaryExpressions: false,
+            ignoreJSX: 'multi-line',
+        }],
         'valid-jsdoc': ['warn', {
             requireParamDescription: false,
             requireReturn: false,
@@ -62,10 +49,6 @@ const config: Linter.Config = {
         'no-eval': 'error',
         'no-extend-native': 'error',
         'no-extra-bind': 'warn',
-        'no-extra-parens': ['warn', 'all', {
-            nestedBinaryExpressions: false,
-            ignoreJSX: 'multi-line',
-        }],
         'no-fallthrough': 'error',
         'no-floating-decimal': 'warn',
         'no-implied-eval': 'error',
@@ -82,6 +65,8 @@ const config: Linter.Config = {
         'no-octal': 'error',
         'no-proto': 'error',
         'no-redeclare': 'warn',
+        'no-return-assign': 'error',
+        'no-return-await': 'error',
         'no-script-url': 'error',
         'no-self-compare': 'error',
         'no-sequences': 'error',
@@ -120,7 +105,7 @@ const config: Linter.Config = {
         'array-bracket-spacing': 'off', // disable because we want spaces on destructured arrays
         'block-spacing': ['error', 'never'],
         'brace-style': ['error', '1tbs', {
-            allowSingleLine: true,
+            allowSingleLine: false,
         }],
         'comma-spacing': 'error',
         'comma-style': 'error',
@@ -137,7 +122,6 @@ const config: Linter.Config = {
         'indent': ['error', 4, {
             SwitchCase: 1,
         }],
-        'jsx-quotes': 'error',
         'key-spacing': ['error', {
             mode: 'minimum',
         }],
@@ -191,114 +175,7 @@ const config: Linter.Config = {
         'prefer-spread': 'warn',
         'prefer-template': 'warn',
         'require-yield': 'error',
-
-        // react
-        'react/display-name': 'warn',
-        'react/forbid-prop-types': 'warn',
-        'react/jsx-boolean-value': 'warn',
-        'react/jsx-closing-bracket-location': 'off',
-        'react/jsx-curly-spacing': 'warn',
-        'react/jsx-fragments': ['error', 'syntax'],
-        'react/jsx-handler-names': ['warn', {
-            eventHandlerPrefix: 'on',
-            eventHandlerPropPrefix: 'on',
-        }],
-        'react/jsx-indent-props': 'warn',
-        'react/jsx-key': 'warn',
-        'react/jsx-one-expression-per-line': ['warn', {
-            allow: 'literal',
-        }],
-        'react/jsx-max-props-per-line': 'off',
-        'react/jsx-no-bind': ['error', {
-            allowArrowFunctions: true,
-        }],
-        'react/jsx-no-duplicate-props': 'warn',
-        'react/jsx-no-literals': 'off',
-        'react/jsx-no-undef': 'warn',
-        'react/jsx-pascal-case': 'warn',
-        'react/jsx-props-no-multi-spaces': 'warn',
-        'react/jsx-uses-react': 'warn',
-        'react/jsx-uses-vars': 'warn',
-        'react/jsx-no-comment-textnodes': 'warn',
-        'react/jsx-tag-spacing': ['warn', {
-            beforeClosing: 'never',
-        }],
-        'react/jsx-wrap-multilines': 'warn',
-        'react/no-deprecated': 'warn',
-        'react/no-did-mount-set-state': 'warn',
-        'react/no-did-update-set-state': 'warn',
-        'react/no-direct-mutation-state': 'error',
-        'react/no-is-mounted': 'warn',
-        'react/no-multi-comp': 'warn',
-        'react/no-string-refs': 'warn',
-        'react/no-this-in-sfc': 'error',
-        'react/no-unknown-property': 'warn',
-        'react/no-will-update-set-state': 'error',
-        'react/prefer-es6-class': 'warn',
-        'react/react-in-jsxscope': 'off',
-        'react/require-render-return': 'warn',
-        'react/self-closing-comp': 'warn',
-        'react/sort-comp': ['warn', {
-            order: ['lifecycle', 'render', 'everything-else'],
-        }],
-
-        // React hooks
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
-
-        // Ely.by's custom rules
-        '@elyby/jsx-closing-bracket-location': 'warn',
     },
-
-    overrides: [
-        {
-            files: ['*.ts', '*.tsx'],
-            rules: {
-                'camelcase': 'off',
-                'func-call-spacing': 'off',
-                'indent': 'off',
-                'no-array-constructor': 'off',
-                'no-extra-parens': 'off',
-                'no-unused-vars': 'off',
-                'valid-jsdoc': 'off',
-                'semi': 'off',
-
-                'react/prop-types': 'off',
-
-                '@typescript-eslint/adjacent-overload-signatures': 'error',
-                '@typescript-eslint/array-type': ['error', 'generic'],
-                '@typescript-eslint/camelcase': 'error',
-                '@typescript-eslint/class-name-casing': 'error',
-                '@typescript-eslint/explicit-member-accessibility': 'error',
-                '@typescript-eslint/func-call-spacing': 'error',
-                '@typescript-eslint/indent': 'error',
-                '@typescript-eslint/interface-name-prefix': ['error', 'never'],
-                '@typescript-eslint/member-delimiter-style': 'error',
-                '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
-                '@typescript-eslint/no-array-constructor': 'error',
-                '@typescript-eslint/no-empty-interface': 'error',
-                '@typescript-eslint/no-extra-parens': ['warn', 'all', {
-                    nestedBinaryExpressions: false,
-                    ignoreJSX: 'multi-line',
-                }],
-                '@typescript-eslint/no-inferrable-types': 'error',
-                '@typescript-eslint/no-misused-new': 'error',
-                '@typescript-eslint/no-namespace': 'error',
-                '@typescript-eslint/no-object-literal-type-assertion': 'error',
-                '@typescript-eslint/no-parameter-properties': 'error',
-                '@typescript-eslint/no-triple-slash-reference': 'error',
-                '@typescript-eslint/no-unused-vars': 'error',
-                '@typescript-eslint/no-use-before-define': 'error',
-                '@typescript-eslint/no-useless-constructor': 'warn',
-                '@typescript-eslint/no-var-requires': 'error',
-                '@typescript-eslint/prefer-for-of': 'warn',
-                '@typescript-eslint/prefer-interface': 'error',
-                '@typescript-eslint/prefer-namespace-keyword': 'error',
-                '@typescript-eslint/semi': 'error',
-                '@typescript-eslint/type-annotation-spacing': 'error',
-            },
-        },
-    ],
 };
 
 export default config;
