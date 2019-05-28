@@ -4,38 +4,85 @@ Set of ESLint rules used in development of Ely.by JS projects. Contains rules fo
 
 ## Installation
 
-First of all install Ely.by ESLint plugin and `eslint` peer dependency via preferred package manager:
+First of all install Ely.by ESLint plugin and `eslint` peer dependency via NPM:
 
 ```sh
-# NPM users:
 npm install @elyby/eslint-plugin eslint --save-dev
-# Yarn users:
+```
+
+Or via yarn:
+
+```sh
 yarn add -D @elyby/eslint-plugin eslint
 ```
 
-Then add the following configuration to your `.eslintrc.js` file:
+## Configuration
 
-```js
-module.exports = {
-    extends: [
-        'plugin:@elyby/config',
-    ],
+The configuration is divided into several parts. The `base` provides only pure js checks. To use it, 
+simply add the `plugin:@elyby/base` configuration to the `extends` block:
+
+```json
+{
+    "extends": [
+        "plugin:@elyby/config"
+    ]
 }
 ```
 
-And that's it!
+### React
+
+The configuration for React requires additional dependencies. Install them first:
+
+```sh
+# NPM:
+npm install eslint-plugin-react eslint-plugin-react-hooks --save-dev
+# Yarn:
+yarn add -D eslint-plugin-react eslint-plugin-react-hooks
+```
+
+Then add the `plugin:@elyby/react` configuration to the `extends` block:
+
+```json
+{
+    "extends": [
+        "plugin:@elyby/config",
+        "plugin:@elyby/react"
+    ]
+}
+```
+
+### TypeScript
+
+Configuration for TypeScript also requires additional libraries:
+
+```sh
+# NPM:
+npm install @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
+# Yarn:
+yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+
+Then add the `plugin:@elyby/react` configuration to the `extends` block:
+
+```json
+{
+    "extends": [
+        "plugin:@elyby/config",
+        "plugin:@elyby/typescript"
+    ]
+}
+```
 
 You may still wish to override some of our rules, as well as the rest of our eslint configuration settings.
 For example, you can specify the preferred `env` for eslint:
 
-```js
-module.exports = {
-    // ...rest of the configuration
-    env: {
-        browser: true,
-        es6: true,
-    },
-};
+```json
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    }
+}
 ```
 
 ## Using our custom fixers
@@ -43,13 +90,12 @@ module.exports = {
 First of all, you must install Ely.by's ESLint plugin as described in the [installation chapter](#installation).
 After that you can enable our custom rules with defining our plugin in `plugins` section:
 
-```js
-module.exports = {
-    // ...rest of the configuration
-    plugins: [
-        '@elyby',
-    ],
-};
+```json
+{
+    "plugins": [
+        "@elyby"
+    ]
+}
 ```
 
 After that all custom rules will be available for use.
