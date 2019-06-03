@@ -24,7 +24,7 @@ simply add the `plugin:@elyby/base` configuration to the `extends` block:
 ```json
 {
     "extends": [
-        "plugin:@elyby/config"
+        "plugin:@elyby/base"
     ]
 }
 ```
@@ -45,7 +45,7 @@ Then add the `plugin:@elyby/react` configuration to the `extends` block:
 ```json
 {
     "extends": [
-        "plugin:@elyby/config",
+        "plugin:@elyby/base",
         "plugin:@elyby/react"
     ]
 }
@@ -67,7 +67,7 @@ Then add the `plugin:@elyby/react` configuration to the `extends` block:
 ```json
 {
     "extends": [
-        "plugin:@elyby/config",
+        "plugin:@elyby/base",
         "plugin:@elyby/typescript"
     ]
 }
