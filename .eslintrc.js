@@ -1,6 +1,7 @@
 module.exports = {
     extends: [
-        'plugin:@elyby/config',
+        'plugin:@elyby/base',
+        'plugin:@elyby/typescript',
     ],
 
     env: {
